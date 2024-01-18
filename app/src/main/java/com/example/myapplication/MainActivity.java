@@ -39,12 +39,19 @@ public class MainActivity extends AppCompatActivity {
             try {
                 float amount = Float.parseFloat(amount_editText.getText().toString());
                 float custom = Float.parseFloat(custom_editText.getText().toString())/100;
-                float tip = amount*custom;
-                float total = amount+tip;
-                builder.setTitle("Tip");
-                builder.setMessage( String.format("%.2f",tip));
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                if(custom<=0.3) {
+                    float tip = amount * custom;
+                    float total = amount + tip;
+                    builder.setTitle("Tip");
+                    builder.setMessage(String.format("%.2f", tip));
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(MainActivity.this , "小費不能超過30%", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }catch (NumberFormatException e){
                 Toast toast = Toast.makeText(MainActivity.this , "欄位不能空白", Toast.LENGTH_SHORT);
                 toast.show();
@@ -57,12 +64,19 @@ public class MainActivity extends AppCompatActivity {
             try {
                 float amount = Float.parseFloat(amount_editText.getText().toString());
                 float custom = Float.parseFloat(custom_editText.getText().toString())/100;
-                float tip = amount*custom;
-                float total = amount+tip;
-                builder.setTitle("Total");
-                builder.setMessage( String.format("%.2f",total));
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                if(custom<=0.3) {
+                    float tip = amount * custom;
+                    float total = amount + tip;
+                    builder.setTitle("Total");
+                    builder.setMessage(String.format("%.2f", total));
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else
+                {
+                    Toast toast = Toast.makeText(MainActivity.this , "小費不能超過30%", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }catch (NumberFormatException e){
                 Toast toast = Toast.makeText(MainActivity.this , "欄位不能空白", Toast.LENGTH_SHORT);
                 toast.show();
